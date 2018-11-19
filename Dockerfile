@@ -20,6 +20,7 @@ WORKDIR /app
 # are made.
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install --with development test --jobs 20 --retry 5
+RUN bundle package --all
 
 # Copy the main application.
 COPY . ./
