@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "178ca18c-1fd8-4857-b771-b80532cef3aa",
+		"name": "json_api_demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://api_demo:3000/posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "400315df-48ec-407f-a147-2825b9955d4f",
+						"exec": [
+							"/* status code */",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"/* body contains string */",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});",
+							"",
+							"/* Complete body string */",
+							"",
+							"// pm.test(\"Body is correct\", function () {",
+							"//     pm.response.to.have.body(\"your-body-response\");",
+							"// });",
+							"",
+							"/* Test each value of response object */",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id).to.eql(3);",
+							"    pm.expect(jsonData[0].title).to.eql(\"First post title\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"/* Match schema */",
+							"var schema = {",
+							"  \"id\": {",
+							"    \"type\": \"integer\"",
+							"  },",
+							"  \"title\": {",
+							"      \"type\": \"string\"",
+							"  },",
+							"  \"body\": {",
+							"      \"type\": \"string\"",
+							"  },",
+							"  \"created_at\": {",
+							"      \"type\": \"string\", \"format\": \"datetime\"",
+							"  },",
+							"  \"updated_at\": {",
+							"      \"type\": \"string\", \"format\": \"datetime\"",
+							"  }",
+							"};",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api_demo:3000/posts",
+					"protocol": "http",
+					"host": [
+						"api_demo"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://api_demo:3000/posts/3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d289e3bb-4e50-4ddf-8818-6fef6b462be6",
+						"exec": [
+							"/* status code */",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"/* body contains string */",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});",
+							"",
+							"/* Complete body string */",
+							"",
+							"// pm.test(\"Body is correct\", function () {",
+							"//     pm.response.to.have.body(\"your-body-response\");",
+							"// });",
+							"",
+							"/* Test each value of response object */",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(3);",
+							"    pm.expect(jsonData.title).to.eql(\"First post title\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"/* Match schema */",
+							"var schema = {",
+							"  \"id\": {",
+							"    \"type\": \"integer\"",
+							"  },",
+							"  \"title\": {",
+							"      \"type\": \"string\"",
+							"  },",
+							"  \"body\": {",
+							"      \"type\": \"string\"",
+							"  },",
+							"  \"created_at\": {",
+							"      \"type\": \"string\", \"format\": \"datetime\"",
+							"  },",
+							"  \"updated_at\": {",
+							"      \"type\": \"string\", \"format\": \"datetime\"",
+							"  }",
+							"};",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"",
+							"pm.test('Schema is valid', function() {",
+							"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api_demo:3000/posts/3",
+					"protocol": "http",
+					"host": [
+						"api_demo"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
